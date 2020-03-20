@@ -13,6 +13,50 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/welcome', function () {
+    //return 'Hello World!';  //String도 리턴 가능
+    return ['foo'=>'bar'];  //Json도 리턴 가능
+});
+
+Route::prefix('/board')->group(function() {
+    Route::view('index', 'board.index');
+});
+
+//http://gittest.vm.etoday.co.kr/?name=명심
+Route::get('/', function () {
+    $name = request('name');
+
+    return view('welcome', [
+        'name' => $name
+    ]);
+});
+
+Route::get('/', function () {
+    return view('welcome', [
+        'name' => request('name')
+    ]);
+});
+
+//http://gittest.vm.etoday.co.kr/board/my-first-post
+Route::get('/board/{post}', function ($post) {
+    $posts = [
+        'my-first-post' =>  'Hello, this is my first blog post!',
+        'my-second-post'=>  'Now I am getting the hang of this blogging thing'
+    ];
+
+    if(!array_key_exists($post, $posts)) {
+        abort(404, 'Sorry, that post was not found');
+    }
+
+    return view('/board/index', [
+        'post' => $posts[$post]
+    ]);
+});
+*/
+
+Route::get('/board/{post}', 'PostsController@show');

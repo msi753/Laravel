@@ -80,19 +80,19 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <h1>{{ $name }}님 환영합니다.</h1>
+                <h6>{!! $name !!}님 환영합니다. 이스케이핑하지 않고 그냥 렌더한다</h6>
+                <div class="title m-b-md">라라벨</div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://laracasts.com">게시판</a>
+                    <a href="http://www.etoday.co.kr/news/">News</a>
                     <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://nova.laravel.com">Todo리스트</a>
+                    <a href="https://forge.laravel.com">코로나</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/msi753/laravel">GitHub</a>
                 </div>
             </div>
         </div>
