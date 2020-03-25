@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Article;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,12 @@ class ArticlesController extends Controller
 
     //render a list of a resource.
     public function index() {
-        $articles= Article::latest()->get();
+        if(request('tag')) {
+            $articles = Tag::where('name', request('tag'))->firstOrFail()->articles;
+        } else {      
+            $articles= Article::latest()->get();
+        }
+
 
         //web.php에서 지정한 라우트의 이름name을 적어준다.
         //$article->id를 파라미터로 넘기는 거지만 $article이라고 써도 알아듣는다.

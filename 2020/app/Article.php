@@ -20,4 +20,23 @@ class Article extends Model
     public function path() {
         return route('articles.show', $this);   //현재 인스턴스인 $article이라서 $this 사용
     }
+
+    //user_id가 1인 기사를 쓴 user를 알고 싶을 때
+    //php artisan tinker
+    //App\Article::find(1)->author;
+    public function author() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    //php artisan make:model Tag -m
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
 }
+
+// 'many to many' relationship
+// an article has many tags
+// tag belongs to an aticle
+
+// Learn Laravel
+// php, laravel, work, education
