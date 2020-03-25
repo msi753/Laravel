@@ -57,6 +57,37 @@ Route::get('/board/{post}', function ($post) {
         'post' => $posts[$post]
     ]);
 });
-*/
 
 Route::get('/board/{post}', 'PostsController@show');
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/about', function () {
+    //$article = App\Article::paginate(2);    //total
+    return view('about', [
+        'article' => App\Article::take(3)->latest()->get()
+    ]);
+});
+
+//순서도 중요함
+Route::get('/articles', 'ArticlesController@index')->name('articles.index');
+Route::post('/articles', 'ArticlesController@store');   //포스트 방식
+Route::get('/articles/create', 'ArticlesController@create');
+Route::get('/articles/{foobar}', 'ArticlesController@show')->name('articles.show');
+Route::get('/articles/{article}/edit', 'ArticlesController@edit');
+Route::put('/articles/{article}', 'ArticlesController@update'); //업데이트
+
+
+//라라벨에서 CRUD는 GET, POST, PUT(업데이트), DELETE로 
+// GET /articles
+// GET /articles/:id
+// POST /articles
+// PUT /articles/:id
+// DELETE /articles/:id

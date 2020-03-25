@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>게시판 인덱스</h1>
-    <p>{{$post}}</p>
+    <p>{{$post->body}}</p>
 </body>
 </html>
